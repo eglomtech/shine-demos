@@ -790,7 +790,7 @@ function loadCloud(){
 }
 window.addEventListener('online',loadCloud);
 
-/* ---- splash: stays a few seconds and until the menu, images and fonts are ready (never longer than 10 s) ---- */
+/* ---- splash: 2.8 s on the first visit, 2 s after that, then the app opens even if data is still loading ---- */
 var SP={menu:false,imgs:false,fonts:false};
 function spCheck(){if(window.__spCheck)window.__spCheck()}
 function spMenu(){
@@ -803,21 +803,11 @@ function spMenu(){
   spCheck();
 }
 (function(){
-  var splash=$('#splash'),bar=$('#bar'),txt=$('#ldTxt'),k=1,ret=false,loaded=document.readyState==='complete',done=false,minDone=false;
-  try{if(localStorage.getItem('shine_seen')){ret=true;k=.55;document.documentElement.style.setProperty('--k',k)}localStorage.setItem('shine_seen','1')}catch(e){}
+  var splash=$('#splash'),k=.85,ret=false,done=false;
+  try{if(localStorage.getItem('shine_seen')){ret=true;k=.55}localStorage.setItem('shine_seen','1')}catch(e){}
+  document.documentElement.style.setProperty('--k',k);
   function leave(){if(done)return;done=true;splash.classList.add('out');setTimeout(function(){$('#app').classList.add('show')},350);setTimeout(function(){splash.style.display='none'},900)}
-  function ready(){return loaded&&SP.menu&&SP.imgs&&SP.fonts}
-  function check(){
-    if(done)return;
-    if(minDone&&ready())leave();
-    else if(minDone){bar.classList.add('on');txt.textContent=LANG==='am'?'ምናሌው በመዘጋጀት ላይ…':'Getting the menu ready…';txt.classList.add('on')}
-  }
-  window.__spCheck=check;
-  window.addEventListener('load',function(){loaded=true;check()});
-  if(document.fonts&&document.fonts.ready)document.fonts.ready.then(function(){SP.fonts=true;check()});else SP.fonts=true;
-  setTimeout(function(){SP.fonts=true;check()},4000);
-  setTimeout(function(){minDone=true;check()},ret?2600:3300);
-  setTimeout(leave,10000);
+  setTimeout(leave,ret?2000:2800);/* never waits for loading: the saved/built-in menu is shown at once and updates itself later */
   splash.addEventListener('click',leave);
 })();
 /* ---- install on phone ---- */
