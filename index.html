@@ -329,7 +329,7 @@ img,svg,video{max-width:100%}
       <details><summary>What is the minimum number of guests?</summary><p>We cater for 50 guests or more.</p></details>
       <details><summary>Can I change the dishes in a menu?</summary><p>Our menus are set packages with a fixed price per person or per plate. For special requests, please call us.</p></details>
       <details><summary>How does payment work?</summary><p>You pay later. We call you first to agree the final price, and you pay after we confirm.</p></details>
-      <details><summary>Where are you?</summary><p>Bole Medhanialem, Morning Star Mall, 3rd floor, Addis Ababa.</p></details>
+      <details><summary>Where are you?</summary><p>Bole Medhaniyalem, Morning Star Mall (3rd Floor), Addis Ababa.</p></details>
     </div>
   </section>
 
@@ -396,10 +396,11 @@ img,svg,video{max-width:100%}
 
 <div id="shade"></div>
 <div class="sheet" id="sh-call"><h3>Call Shine Catering</h3>
-  <a class="call" href="tel:+251911210222">0911 21 02 22<span>Tap to call</span></a>
   <a class="call" href="tel:+251911409797">0911 40 97 97<span>Tap to call</span></a>
-  <a class="call" href="https://wa.me/251911210222" target="_blank" rel="noopener">WhatsApp<span>Chat with us</span></a>
-  <a class="call" href="https://www.google.com/maps/search/?api=1&query=Morning+Star+Mall+Bole+Medhanialem+Addis+Ababa" target="_blank" rel="noopener">Find us on the map<span>Morning Star Mall, 3rd floor</span></a>
+  <a class="call" href="tel:+251951833333">0951 83 33 33<span>Tap to call</span></a>
+  <a class="call" href="tel:+251951733333">0951 73 33 33<span>Tap to call</span></a>
+  <a class="call" href="https://wa.me/251911409797" target="_blank" rel="noopener">WhatsApp<span>Chat with us</span></a>
+  <a class="call" href="https://www.google.com/maps/search/?api=1&query=Morning+Star+Mall+Bole+Addis+Ababa" target="_blank" rel="noopener">Find us on the map<span>Morning Star Mall, 3rd floor</span></a>
 </div>
 
 
@@ -506,7 +507,7 @@ var AM={
 'What is the minimum number of guests?':'ቢያንስ ስንት እንግዶች ያስፈልጋሉ?','We cater for 50 guests or more.':'ለ50 እና ከዚያ በላይ እንግዶች እናዘጋጃለን።',
 'Can I change the dishes in a menu?':'በምናሌው ውስጥ ያሉትን ምግቦች መቀየር እችላለሁ?','Yes. You can swap, remove or add your own dishes. We adjust the price after we call you.':'አዎ። ምግቦችን መቀየር፣ ማስወገድ ወይም የራስዎን መጨመር ይችላሉ። ከደወልንልዎ በኋላ ዋጋውን እናስተካክላለን።',
 'How does payment work?':'ክፍያ እንዴት ይፈጸማል?','You pay later. We call you first to agree the final price, and you pay after we confirm.':'ክፍያው በኋላ ነው። መጀመሪያ እንደውልልዎና የመጨረሻውን ዋጋ እንስማማለን፤ ካረጋገጥን በኋላ ይከፍላሉ።',
-'Where are you?':'የት ነው የምንገኘው?','Bole Medhanialem, Morning Star Mall, 3rd floor, Addis Ababa.':'ቦሌ መድኃኔዓለም፣ ሞርኒንግ ስታር ሞል፣ 3ኛ ፎቅ፣ አዲስ አበባ።',
+'Where are you?':'የት ነው የምንገኘው?','Bole Medhaniyalem, Morning Star Mall (3rd Floor), Addis Ababa.':'ቦሌ መድኃኔዓለም፣ ሞርኒንግ ስታር ሞል፣ 3ኛ ፎቅ፣ አዲስ አበባ።',
 'Starter':'ምግብ መክፈቻ','Dressings':'ድስቶች እና ማጣፈጫዎች','Main dishes':'ዋና ምግቦች','Kitfo corner':'የክትፎ ማዕዘን','Ethiopia corner':'የኢትዮጵያ ማዕዘን','Ethiopian corner':'የኢትዮጵያ ማዕዘን','Desserts':'ጣፋጮች','Live station':'ቀጥታ የማብሰያ ጣቢያ','Salads':'ሰላጣዎች','Traditional':'ባህላዊ','Savory bites':'ጨዋማ ንክሻዎች','International corner':'የዓለም አቀፍ ማዕዘን',
 'Prestige Buffet':'ፕሪስቲጅ ቡፌ','Standard Kitfo Menu':'ሻይን ስታንዳርድ ክትፎ ኮርነር','Signature Kitfo Menu':'ሻይን ሲግኔቸር ክትፎ ኮርነር','Traditional Menu':'ባህላዊ ምግቦች',
 'per plate':'በአንድ ሳህን','per person':'በአንድ ሰው','ETB':'ብር','Request this package':'ይህን ጥቅል ይጠይቁ','View menu':'ምናሌውን ይመልከቱ','Final price confirmed when we call you':'የመጨረሻው ዋጋ ስንደውልልዎ ይረጋገጣል',
@@ -699,7 +700,7 @@ $('#reqForm').addEventListener('submit',function(e){
 $('#again').addEventListener('click',function(){pkg=null;items=[];custom=[];$('#reqForm').reset();prefill();setStep(1);updateDot();go('pkgs')});
 
 function sending(on){var b=$('#send');b.disabled=on;b.innerHTML=on?'<i class="spin"></i> '+t('Sending…'):t('Send quote request');$('#reqForm').classList.toggle('busy',on);if(on)$('#err').classList.remove('on')}
-function showErr(){var e=$('#err');e.innerHTML=esc(t(navigator.onLine?'We could not send your request. Check your connection and try again, or call us.':'You are offline. Connect to the internet and try again, or call us.'))+' <button type="button" id="retry">'+t('Try again')+'</button> <a href="tel:+251911210222" style="font-weight:700;text-decoration:underline">'+t('Call us')+'</a>';e.classList.add('on')}
+function showErr(){var e=$('#err');e.innerHTML=esc(t(navigator.onLine?'We could not send your request. Check your connection and try again, or call us.':'You are offline. Connect to the internet and try again, or call us.'))+' <button type="button" id="retry">'+t('Try again')+'</button> <a href="tel:+251911409797" style="font-weight:700;text-decoration:underline">'+t('Call us')+'</a>';e.classList.add('on')}
 /* ---- save ---- */
 function load(src){return new Promise(function(r,j){var s=document.createElement('script');s.src=src;s.onload=r;s.onerror=j;document.head.appendChild(s)})}
 var fbP=null,ALERT_URL='https://script.google.com/macros/s/AKfycbx7s3FxM_dJDajes85qgTvXfdzYVJXilKHRuhINQmL9RGl9rn5yay8JevUhcbviiL8X/exec';/* paste the Google Apps Script web app link here for Telegram alerts */
