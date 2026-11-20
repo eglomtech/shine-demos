@@ -352,26 +352,19 @@ img,svg,video{max-width:100%}
     <form id="reqForm" novalidate style="display:none">
       <h1 style="font-size:38px">Your request</h1>
       <div class="card" id="sum"></div>
-      <div class="prog" id="prog"><i class="on"></i><i></i><i></i></div>
-      <p class="sub sm" id="stepLbl">Step 1 of 3 · Event</p>
+      <div class="prog" id="prog"><i class="on"></i><i></i></div>
+      <p class="sub sm" id="stepLbl">Step 1 of 2 · Event</p>
       <div class="stp on" data-step="1"><fieldset><legend>Your event</legend>
         <label for="f-type">Event type</label>
         <select id="f-type"><option value="">Choose…</option><option>Wedding</option><option>Corporate event</option><option>Birthday or private party</option><option>Engagement or family event</option><option>Other</option></select>
         <div class="row"><div><label for="f-date">Date</label><input type="date" id="f-date"></div><div><label for="f-time">Start time</label><input type="time" id="f-time"></div></div>
         <div class="row"><div><label for="f-guests">Guests (50 or more)</label><input type="number" inputmode="numeric" id="f-guests" min="50" placeholder="50"></div><div><label for="f-fast">Fasting guests</label><input type="number" inputmode="numeric" id="f-fast" min="0" placeholder="0"></div></div>
       </fieldset></div>
-      <div class="stp" data-step="2"><fieldset><legend>Place and service</legend>
+      <div class="stp" data-step="2"><fieldset><legend>Place and you</legend>
         <label for="f-venue">Venue or address</label><input id="f-venue" autocomplete="street-address" placeholder="Hall name, area, city">
-        <label for="f-serv">Service</label>
-        <select id="f-serv"><option value="">Choose…</option><option>Delivery</option><option>Delivery with setup and staff</option><option>Pickup</option></select>
-        <label for="f-diet">Dietary or allergy notes</label><textarea id="f-diet" rows="2"></textarea>
         <label for="f-notes">Special requests</label><textarea id="f-notes" rows="2"></textarea>
-      </fieldset></div>
-      <div class="stp" data-step="3"><fieldset><legend>About you</legend>
         <label for="f-name">Full name</label><input id="f-name" autocomplete="name">
         <label for="f-phone">Phone</label><input id="f-phone" type="tel" autocomplete="tel" placeholder="09…">
-        <label for="f-call">Best time for us to call</label><input id="f-call" placeholder="For example, weekdays after 2 PM">
-      
       </fieldset></div>
       <p class="err" id="err" role="alert"></p>
       <div class="nav2"><button type="button" class="btn line" id="stBack" style="display:none">Back</button><button type="button" class="btn dark" id="stNext">Next</button><button class="btn dark" id="send" type="submit" style="display:none">Send quote request</button></div>
@@ -507,7 +500,7 @@ var AM={
 'What is the minimum number of guests?':'ቢያንስ ስንት እንግዶች ያስፈልጋሉ?','We cater for 50 guests or more.':'ለ50 እና ከዚያ በላይ እንግዶች እናዘጋጃለን።',
 'Can I change the dishes in a menu?':'በምናሌው ውስጥ ያሉትን ምግቦች መቀየር እችላለሁ?','Yes. You can swap, remove or add your own dishes. We adjust the price after we call you.':'አዎ። ምግቦችን መቀየር፣ ማስወገድ ወይም የራስዎን መጨመር ይችላሉ። ከደወልንልዎ በኋላ ዋጋውን እናስተካክላለን።',
 'How does payment work?':'ክፍያ እንዴት ይፈጸማል?','You pay later. We call you first to agree the final price, and you pay after we confirm.':'ክፍያው በኋላ ነው። መጀመሪያ እንደውልልዎና የመጨረሻውን ዋጋ እንስማማለን፤ ካረጋገጥን በኋላ ይከፍላሉ።',
-'Where are you?':'የት ነው የምንገኘው?','Bole Medhaniyalem, Morning Star Mall (3rd Floor), Addis Ababa.':'ቦሌ መድኃኔዓለም፣ ሞርኒንግ ስታር ሞል፣ 3ኛ ፎቅ፣ አዲስ አበባ።',
+'Place and you':'ቦታና እርስዎ','Where are you?':'የት ነው የምንገኘው?','Bole Medhaniyalem, Morning Star Mall (3rd Floor), Addis Ababa.':'ቦሌ መድኃኔዓለም፣ ሞርኒንግ ስታር ሞል፣ 3ኛ ፎቅ፣ አዲስ አበባ።',
 'Starter':'ምግብ መክፈቻ','Dressings':'ድስቶች እና ማጣፈጫዎች','Main dishes':'ዋና ምግቦች','Kitfo corner':'የክትፎ ማዕዘን','Ethiopia corner':'የኢትዮጵያ ማዕዘን','Ethiopian corner':'የኢትዮጵያ ማዕዘን','Desserts':'ጣፋጮች','Live station':'ቀጥታ የማብሰያ ጣቢያ','Salads':'ሰላጣዎች','Traditional':'ባህላዊ','Savory bites':'ጨዋማ ንክሻዎች','International corner':'የዓለም አቀፍ ማዕዘን',
 'Prestige Buffet':'ፕሪስቲጅ ቡፌ','Standard Kitfo Menu':'ሻይን ስታንዳርድ ክትፎ ኮርነር','Signature Kitfo Menu':'ሻይን ሲግኔቸር ክትፎ ኮርነር','Traditional Menu':'ባህላዊ ምግቦች',
 'per plate':'በአንድ ሳህን','per person':'በአንድ ሰው','ETB':'ብር','Request this package':'ይህን ጥቅል ይጠይቁ','View menu':'ምናሌውን ይመልከቱ','Final price confirmed when we call you':'የመጨረሻው ዋጋ ስንደውልልዎ ይረጋገጣል',
@@ -637,7 +630,7 @@ function renderReq(){
 var today=new Date();today.setMinutes(today.getMinutes()-today.getTimezoneOffset());
 $('#f-date').min=today.toISOString().slice(0,10);
 
-var step=1,SM={1:['type','date','time','guests'],2:['venue','serv'],3:['name','phone']},LBL=['Event','Place and service','About you'];
+var step=1,SM={1:['type','date','time','guests'],2:['venue','name','phone']},LBL=['Event','Place and you'];
 function stepOf(k){for(var n in SM)if(SM[n].indexOf(k)>-1)return +n}
 var BLOCKED=[];
 function minDate(){var d=new Date();d.setDate(d.getDate()+7);return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
@@ -647,10 +640,10 @@ function setStep(n){
   step=n;
   $$('#reqForm .stp').forEach(function(x){x.classList.toggle('on',+x.dataset.step===n)});
   $$('#prog i').forEach(function(x,i){x.classList.toggle('on',i<n)});
-  $('#stepLbl').textContent=t('Step')+' '+n+' '+t('of')+' 3 \u00b7 '+t(LBL[n-1]);
+  $('#stepLbl').textContent=t('Step')+' '+n+' '+t('of')+' 2 \u00b7 '+t(LBL[n-1]);
   $('#stBack').style.display=n>1?'':'none';
-  $('#stNext').style.display=n<3?'':'none';
-  $('#send').style.display=n===3?'':'none';
+  $('#stNext').style.display=n<2?'':'none';
+  $('#send').style.display=n===2?'':'none';
   $('#err').classList.remove('on');
 }
 $('#stBack').addEventListener('click',function(){setStep(step-1);window.scrollTo(0,0)});
@@ -667,8 +660,8 @@ $('#stNext').addEventListener('click',function(){
 
 $('#reqForm').addEventListener('submit',function(e){
   e.preventDefault();
-  if(step<3){$('#stNext').click();return}
-  var f=function(id){return $('#f-'+id).value.trim()},bad=[],need={type:'event type',date:'date',time:'start time',venue:'venue',serv:'service',name:'name'};
+  if(step<2){$('#stNext').click();return}
+  var f=function(id){return $('#f-'+id).value.trim()},bad=[],need={type:'event type',date:'date',time:'start time',venue:'venue',name:'name'};
   $$('#reqForm .bad').forEach(function(x){x.classList.remove('bad')});
   for(var k in need)if(!f(k))bad.push(k);
   if(!(+f('guests')>=50))bad.push('guests');
@@ -683,14 +676,14 @@ $('#reqForm').addEventListener('submit',function(e){
   err.classList.remove('on');
   var data={status:'new',package:pkg.n,custom:custom.slice(),removed:items.filter(function(i){return i.rm}).map(function(i){return i.orig}),
     swapped:items.filter(function(i){return !i.rm&&i.name!==i.orig}).map(function(i){return {from:i.orig,to:i.name}}),
-    event:{type:f('type'),date:f('date'),time:f('time'),venue:f('venue'),service:f('serv'),guests:+f('guests'),fastingGuests:+f('fast')||0,dietary:f('diet'),requests:f('notes')},
-    customer:{name:f('name'),phone:f('phone'),bestTimeToCall:f('call')}};
+    event:{type:f('type'),date:f('date'),time:f('time'),venue:f('venue'),guests:+f('guests'),fastingGuests:+f('fast')||0,requests:f('notes')},
+    customer:{name:f('name'),phone:f('phone')}};
   var btn=$('#send');sending(true);
   save(data).then(function(id){
     try{localStorage.setItem('shine_me',JSON.stringify({n:data.customer.name,p:data.customer.phone}))}catch(e){}
     $('#dName').textContent=data.customer.name?', '+data.customer.name.split(' ')[0]:'';
     var c=changeLines();
-    $('#dSum').innerHTML='<h3>'+esc(t(pkg.n))+'</h3><p class="sub sm">'+esc(data.event.type)+' · '+esc(data.event.date)+' at '+esc(data.event.time)+'<br>'+data.event.guests+' guests · '+esc(data.event.service)+'<br>'+esc(data.event.venue)+'</p>'+(c.length?'<ul>'+c.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>':'');
+    $('#dSum').innerHTML='<h3>'+esc(t(pkg.n))+'</h3><p class="sub sm">'+esc(data.event.type)+' · '+esc(data.event.date)+' at '+esc(data.event.time)+'<br>'+data.event.guests+' guests<br>'+esc(data.event.venue)+'</p>'+(c.length?'<ul>'+c.map(function(x){return '<li>'+esc(x)+'</li>'}).join('')+'</ul>':'');
     if(id)$('#dSum').insertAdjacentHTML('afterbegin','<p class="sub sm">'+t('Request number')+': <b>'+id.slice(0,6).toUpperCase()+'</b></p>');
     go('done');
   }).catch(function(){showErr()})
@@ -711,7 +704,7 @@ function save(data){
   var job=fbReady().then(function(){data.createdAt=firebase.firestore.FieldValue.serverTimestamp();return firebase.firestore().collection('orders').add(data)}).then(function(ref){notify(data,ref.id);return ref.id});
   return Promise.race([job,new Promise(function(_,j){setTimeout(function(){j(new Error('timeout'))},15000)})]);
 }
-function notify(d,id){if(!ALERT_URL)return;try{fetch(ALERT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({id:id,package:d.package,name:d.customer.name,phone:d.customer.phone,date:d.event.date,time:d.event.time,guests:d.event.guests,venue:d.event.venue,service:d.event.service,changes:d.removed.length+d.swapped.length,custom:d.custom.length})})}catch(e){}}
+function notify(d,id){if(!ALERT_URL)return;try{fetch(ALERT_URL,{method:'POST',mode:'no-cors',headers:{'Content-Type':'text/plain'},body:JSON.stringify({id:id,package:d.package,name:d.customer.name,phone:d.customer.phone,date:d.event.date,time:d.event.time,guests:d.event.guests,venue:d.event.venue,changes:d.removed.length+d.swapped.length,custom:d.custom.length})})}catch(e){}}
 /* packages and blocked dates come from the owner's dashboard; the menu built into this file is the backup */
 function normSecs(x){
   var out=[],src=x.sections||x.sec||x.s||null;
