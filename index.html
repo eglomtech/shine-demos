@@ -281,14 +281,12 @@ img,svg,video{max-width:100%}
 /* show-only menus: coffee and bar setup (video backgrounds, no ordering) */
 .shw{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:4px 0 18px}
 .sk{position:relative;overflow:hidden;isolation:isolate;aspect-ratio:3/4;border-radius:20px;display:flex;flex-direction:column;justify-content:flex-end;color:var(--cream);background:linear-gradient(155deg,var(--a),var(--b));box-shadow:0 12px 28px rgba(38,40,43,.2)}
-.sk video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;opacity:0;transition:opacity .6s;pointer-events:none}
-.sk video.on{opacity:1}
+.sk video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;pointer-events:none}
 .sk::after{content:"";position:absolute;inset:auto 0 0 0;height:70%;z-index:0;background:linear-gradient(transparent,rgba(16,16,18,.55) 45%,rgba(16,16,18,.88));pointer-events:none}
 .sk .pt{padding:12px;z-index:1}.sk .pt::after{display:none}
 .sk .pt h3{font-size:clamp(19px,5.2vw,26px)}
 @media(min-width:700px){.shw{gap:16px}.sk{aspect-ratio:4/3;border-radius:28px}.sk .pt{padding:20px}.sk .pt h3{font-size:28px}}
 @media(max-width:359px){.shw{grid-template-columns:1fr}.sk{aspect-ratio:16/10}}
-@media(prefers-reduced-motion:reduce){.sk video{display:none}}
 </style>
 </head>
 <body>
@@ -324,7 +322,7 @@ img,svg,video{max-width:100%}
   <div id="offline" role="status">You are offline. You can still browse the menus.</div>
   <!-- HOME -->
   <section class="scr on" id="s-home">
-    <div class="hero"><svg class="hb" viewBox="0 0 40 30"><use href="#bowl"/></svg><img class="hl" src="images/logo.png" alt="" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'"><div class="hin"><span class="eyebrow">Addis Ababa catering</span><h1>Where great food makes<br>every moment shine</h1><p>Elegant buffets, cocktail receptions and breakfasts, prepared fresh for weddings, meetings and celebrations in Addis Ababa.</p><button class="btn" data-scroll="homeList">See our menus</button></div></div>
+    <div class="hero"><svg class="hb" viewBox="0 0 40 30"><use href="#bowl"/></svg><img class="hl" src="images/logo.png" alt="" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'"><div class="hin"><span class="eyebrow">Addis Ababa catering</span><h1>Where elegance<br>meets excellence</h1><p>For over 20 years, we have transformed special occasions into extraordinary experiences through exquisite cuisine and impeccable service.</p><button class="btn" data-scroll="homeList">See our menus</button></div></div>
     <button class="btn line wide" id="inst" type="button">Install app</button>
     <p class="sub sm" id="iosHint" style="display:none;margin-top:8px">To install: tap Share, then Add to Home Screen</p>
     <h2>Our menus</h2>
@@ -478,7 +476,7 @@ var pkg=null,items=[],custom=[],last={},cur='home';
 /* ---- language: English and Amharic ---- */
 var LANG='en';try{LANG=localStorage.getItem('shine_lang')==='am'?'am':'en'}catch(e){}
 var AM={
-'Where great food makes':'ታላቅ ምግብ','every moment shine':'እያንዳንዱን ጊዜ የሚያደምቅበት','Elegant buffets, cocktail receptions and breakfasts, prepared fresh for weddings, meetings and celebrations in Addis Ababa.':'ለሠርግ፣ ለስብሰባ እና ለተለያዩ ድግሶች በአዲስ አበባ ትኩስ ሆነው የሚዘጋጁ ውብ ቡፌዎች፣ ኮክቴል ግብዣዎች እና ቁርሶች።','Addis Ababa catering':'የአዲስ አበባ ምግብ ዝግጅት','Food for your':'ለትልቅ ቀናትዎ','biggest days':'የሚመጥን ምግብ',
+'Where elegance':'ውበት','meets excellence':'ከብቃት ጋር የሚገናኝበት','For over 20 years, we have transformed special occasions into extraordinary experiences through exquisite cuisine and impeccable service.':'ከ20 ዓመታት በላይ ልዩ ዝግጅቶችን በምርጥ ምግብና እንከን በሌለው አገልግሎት ወደ ልዩ ልምዶች ስንቀይር ቆይተናል።','Addis Ababa catering':'የአዲስ አበባ ምግብ ዝግጅት','Food for your':'ለትልቅ ቀናትዎ','biggest days':'የሚመጥን ምግብ',
 'Buffets, cocktail receptions and breakfasts for weddings, meetings and parties.':'ለሠርግ፣ ለስብሰባ እና ለግል ድግስ የሚሆኑ ቡፌ፣ ኮክቴል እና የቁርስ ምግቦች።',
 'See our menus':'ምናሌዎቻችንን ይመልከቱ','Our menus':'ምናሌዎቻችን','Coffee and bar setup':'ቡና እና ባር ዝግጅት','Coffee Setup':'የቡና ዝግጅት','Bar Setup':'የባር ዝግጅት','Fresh coffee served at your event.':'በዝግጅትዎ ላይ ትኩስ ቡና ይቀርባል።','A styled bar for your reception.':'ለግብዣዎ በውበት የተዘጋጀ ባር።','How it works':'እንዴት ይሠራል',
 'Pick a menu and change any dish you like.':'ምናሌ ይምረጡ፤ የፈለጉትን ምግብ ይቀይሩ።',
@@ -879,8 +877,6 @@ function countUp(card){
   var vio=window.IntersectionObserver?new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}else v.pause()})},{threshold:.25}):null;
   vs.forEach(function(v){
     v.muted=true;
-    v.addEventListener('loadeddata',function(){v.classList.add('on')});
-    if(v.readyState>=2)v.classList.add('on');
     if(vio)vio.observe(v);else{var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}
   });
   reveal($('#showList'));
