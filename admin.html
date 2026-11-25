@@ -132,7 +132,7 @@ var AM={'Email':'ኢሜይል','Password':'የይለፍ ቃል','Log in':'ግባ
 function t(s){return L==='am'&&AM[s]?AM[s]:s}
 function e(s){return String(s==null?'':s).replace(/[&<>"]/g,function(c){return{'&':'&amp;','<':'&lt;','>':'&gt;','"':'&quot;'}[c]})}
 var SKIP_LOGIN=false;/* testing only: true opens the dashboard without login */
-var now=new Date(),S={notes:{},qby:{},events:[],blocked:[],byDate:{},max:0,fullSaved:[],ld:{},cv:'month',wk:null,day:null,addEv:false,name:'',draft:null,u:null,role:'',tab:'orders',orders:[],quotes:{},blocked:[],users:[],menu:null,open:-1,filter:'all',q:'',sel:null,day:null,cal:{y:now.getFullYear(),m:now.getMonth()},err:'',busy:false},unsub=[];
+var now=new Date(),S={notes:{},qby:{},events:[],blocked:[],byDate:{},max:0,fullSaved:[],ld:{},cv:'month',wk:null,day:null,addEv:false,name:'',draft:null,u:null,role:'',tab:'orders',orders:[],quotes:{},blocked:[],users:[],menu:null,open:-1,filter:'all',q:'',sel:null,day:null,cal:(function(){var e=toEth(now.getFullYear(),now.getMonth(),now.getDate());return{y:e.y,m:e.m}})(),err:'',busy:false},unsub=[];
 function owner(){return S.role==='owner'}
 function toast(m){var x=$('#toast');x.textContent=m;x.className='on';clearTimeout(toast.t);toast.t=setTimeout(function(){x.className=''},2600)}
 function slug(n){return n.toLowerCase().replace(/[^a-z0-9]+/g,'-').replace(/^-|-$/g,'')||('p'+Date.now())}
@@ -231,29 +231,42 @@ function saveNote(){var id=S.sel;db.doc('quotes/'+id).set({note:$('#note').value
 function iso(d){return d.getFullYear()+'-'+pad(d.getMonth()+1)+'-'+pad(d.getDate())}
 function dayData(k){var c=[],q=[];S.orders.forEach(function(o){if(o.event&&o.event.date===k){if(o.status==='confirmed')c.push(o);else if(o.status==='quoted')q.push(o)}});var ev=S.events.filter(function(x){return x.date===k});return{c:c,q:q,ev:ev,n:c.length+ev.length}}
 function isFull(k){return S.max>0&&dayData(k).n>=S.max}
-function monName(y,m,o){return new Date(y,m,1).toLocaleDateString(L==='am'?'am-ET':'en-GB',o||{month:'long',year:'numeric'})}
+/* Ethiopian calendar month names (the calendar grid and stored dates stay Gregorian) */
+var ETH=['መስከረም','ጥቅምት','ኅዳር','ታኅሣሥ','ጥር','የካቲት','መጋቢት','ሚያዝያ','ግንቦት','ሰኔ','ሐምሌ','ነሐሴ','ጳጉሜን'];
+function toEth(y,m,d){/* Gregorian y, m (0-11), d -> Ethiopian {y,m (0-12),d} */
+  var a=Math.floor((14-(m+1))/12),yy=y+4800-a,mm=(m+1)+12*a-3,
+  jdn=d+Math.floor((153*mm+2)/5)+365*yy+Math.floor(yy/4)-Math.floor(yy/100)+Math.floor(yy/400)-32045,
+  r=(jdn-1723856)%1461,n=(r%365)+365*Math.floor(r/1460);
+  return{y:4*Math.floor((jdn-1723856)/1461)+Math.floor(r/365)-Math.floor(r/1460),m:Math.floor(n/30),d:(n%30)+1};
+}
+/* Ethiopian y, m (0-12), d -> local Gregorian Date */
+function fromEth(y,m,d){var jdn=1723856+365+365*(y-1)+Math.floor(y/4)+30*(m+1)+d-1-30;return new Date(1970,0,1+(jdn-2440588))}
+function ethDays(y,m){return m<12?30:(y%4===3?6:5)}
+function ethFmt(dt){var e=toEth(dt.getFullYear(),dt.getMonth(),dt.getDate());return{d:e.d,m:ETH[e.m],y:e.y}}
+function monName(y,m){return ETH[m]+' '+y+' ዓ.ም.'}
+function gRange(y,m){var f=fromEth(y,m,1),l=fromEth(y,m,ethDays(y,m)),o={day:'numeric',month:'short'};return f.toLocaleDateString('en-GB',o)+' – '+l.toLocaleDateString('en-GB',{day:'numeric',month:'short',year:'numeric'})}
 function weekStart(d){var x=new Date(d);x.setHours(0,0,0,0);x.setDate(x.getDate()-((x.getDay()+6)%7));return x}
 function dayCell(k,n){var dd=dayData(k),bl=S.blocked.indexOf(k)>-1,fl=isFull(k);return '<button class="d'+(bl?' blk':fl?' fl':'')+(k===iso(new Date())?' td':'')+(S.day===k?' sel':'')+'" data-d="'+k+'">'+n+(dd.n?'<i class="nb">'+dd.n+'</i>':dd.q.length?'<i class="dq"></i>':'')+'</button>'}
 function cMonth(){
-  var y=S.cal.y,m=S.cal.m,first=(new Date(y,m,1).getDay()+6)%7,days=new Date(y,m+1,0).getDate(),cells='';
+  var y=S.cal.y,m=S.cal.m,first=(fromEth(y,m,1).getDay()+6)%7,days=ethDays(y,m),cells='';
   for(var i=0;i<first;i++)cells+='<span></span>';
-  for(var d=1;d<=days;d++)cells+=dayCell(y+'-'+pad(m+1)+'-'+pad(d),d);
-  return '<div class="cm"><button data-cm="-1">‹</button><b>'+monName(y,m)+'</b><button data-cm="1">›</button></div><div class="cal">'+['Mon','Tue','Wed','Thu','Fri','Sat','Sun'].map(function(w){return '<span class="h">'+w+'</span>'}).join('')+cells+'</div><p class="sub" style="margin:10px 0"><i class="nb" style="position:static">n</i> '+t('Confirmed event')+' &nbsp; <i class="dq" style="position:static;display:inline-block"></i> '+t('Quoted event')+' &nbsp; <span class="tg" style="background:#f6d9d6">'+t('Blocked date')+'</span> <span class="tg" style="background:#fff1cc">'+t('Full')+'</span></p>';
+  for(var d=1;d<=days;d++)cells+=dayCell(iso(fromEth(y,m,d)),d);
+  return '<div class="cm"><button data-cm="-1">‹</button><b>'+monName(y,m)+'<small style="display:block;font-weight:400;font-size:11px;opacity:.6">'+gRange(y,m)+'</small></b><button data-cm="1">›</button></div><div class="cal">'+['ሰኞ','ማክ','ረቡ','ሐሙ','ዓርብ','ቅዳ','እሁ'].map(function(w){return '<span class="h">'+w+'</span>'}).join('')+cells+'</div><p class="sub" style="margin:10px 0"><i class="nb" style="position:static">n</i> '+t('Confirmed event')+' &nbsp; <i class="dq" style="position:static;display:inline-block"></i> '+t('Quoted event')+' &nbsp; <span class="tg" style="background:#f6d9d6">'+t('Blocked date')+'</span> <span class="tg" style="background:#fff1cc">'+t('Full')+'</span></p>';
 }
 function cWeek(){
   if(!S.wk)S.wk=weekStart(new Date());
   var h='<div class="cm"><button data-cm="-1">‹</button><b>'+iso(S.wk)+' → '+iso(new Date(S.wk.getFullYear(),S.wk.getMonth(),S.wk.getDate()+6))+'</b><button data-cm="1">›</button></div>';
   for(var i=0;i<7;i++){var d=new Date(S.wk.getFullYear(),S.wk.getMonth(),S.wk.getDate()+i),k=iso(d),dd=dayData(k),bl=S.blocked.indexOf(k)>-1;
-    h+='<button class="oc'+(S.day===k?'" style="border-color:var(--gold)':'')+'" data-d="'+k+'"><div class="r1"><b>'+d.toLocaleDateString(L==='am'?'am-ET':'en-GB',{weekday:'long',day:'numeric',month:'short'})+'</b><span>'+(bl?'<span class="st st-cancelled">'+t('Blocked date')+'</span> ':isFull(k)?'<span class="st st-quoted">'+t('Full')+'</span> ':'')+(dd.n?'<span class="st st-confirmed">'+dd.n+'</span>':'')+'</span></div>'+
+    h+='<button class="oc'+(S.day===k?'" style="border-color:var(--gold)':'')+'" data-d="'+k+'"><div class="r1"><b>'+d.toLocaleDateString(L==='am'?'am-ET':'en-GB',{weekday:'long'})+' '+ethFmt(d).d+' '+ethFmt(d).m+'</b><span>'+(bl?'<span class="st st-cancelled">'+t('Blocked date')+'</span> ':isFull(k)?'<span class="st st-quoted">'+t('Full')+'</span> ':'')+(dd.n?'<span class="st st-confirmed">'+dd.n+'</span>':'')+'</span></div>'+
       (dd.c.concat(dd.q).map(function(o){return '<div class="r2">'+e(o.event.time)+' · '+e(o.customer.name)+' · '+e(o.package)+'</div>'}).join('')+dd.ev.map(function(x){return '<div class="r2">'+e(x.time)+' · '+e(x.title)+' <span class="tg">'+t('by')+' '+e(x.by)+'</span></div>'}).join('')||'<div class="r2">—</div>')+'</button>';}
   return h;
 }
 function cYear(){
-  var y=S.cal.y,h='<div class="cm"><button data-cy="-1">‹</button><b>'+y+'</b><button data-cy="1">›</button></div><div class="yr">';
-  for(var m=0;m<12;m++){var first=(new Date(y,m,1).getDay()+6)%7,days=new Date(y,m+1,0).getDate(),g='';
+  var y=S.cal.y,h='<div class="cm"><button data-cy="-1">‹</button><b>'+y+' ዓ.ም.</b><button data-cy="1">›</button></div><div class="yr">';
+  for(var m=0;m<13;m++){var first=(fromEth(y,m,1).getDay()+6)%7,days=ethDays(y,m),g='';
     for(var i=0;i<first;i++)g+='<span></span>';
-    for(var d=1;d<=days;d++){var k=y+'-'+pad(m+1)+'-'+pad(d),dd=dayData(k);g+='<span class="'+(S.blocked.indexOf(k)>-1?'yb':isFull(k)?'yf':dd.n?'y1':'')+'"></span>'}
-    h+='<button class="ym" data-mon="'+m+'"><b>'+monName(y,m,{month:'short'})+'</b><div class="yg">'+g+'</div></button>';}
+    for(var d=1;d<=days;d++){var k=iso(fromEth(y,m,d)),dd=dayData(k);g+='<span class="'+(S.blocked.indexOf(k)>-1?'yb':isFull(k)?'yf':dd.n?'y1':'')+'"></span>'}
+    h+='<button class="ym" data-mon="'+m+'"><b>'+ETH[m]+'</b><div class="yg">'+g+'</div></button>';}
   return h+'</div>';
 }
 function cList(){
@@ -268,7 +281,7 @@ function closeDay(fromBtn){if(fromBtn&&S.pushed){S.pushed=false;history.back();r
 window.addEventListener('popstate',function(){if(S.dayPage){S.pushed=false;closeDay(false)}});
 function vDay(){
   var k=S.day,dd=dayData(k),bl=S.blocked.indexOf(k)>-1,dt=new Date(k+'T00:00:00'),
-  title=dt.toLocaleDateString(L==='am'?'am-ET':'en-GB',{weekday:'long',day:'numeric',month:'long',year:'numeric'}),
+  title=dt.toLocaleDateString(L==='am'?'am-ET':'en-GB',{weekday:'long'})+' '+ethFmt(dt).d+' '+ethFmt(dt).m+' '+ethFmt(dt).y+' ዓ.ም. ('+iso(dt)+')',
   h='<div class="dpage"><button class="dback" data-dayback><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg>'+t('Calendar')+'</button><h2 class="dh">'+e(title)+'</h2><div class="tgs">'+(bl?'<span class="st st-cancelled">'+t('Blocked date')+'</span>':'')+(isFull(k)?'<span class="st st-quoted">'+t('Full')+'</span>':'')+'<span class="tg">'+dd.n+(S.max>0?' / '+S.max:'')+' '+t('Events')+'</span></div>';
   if(bl&&S.byDate[k])h+='<p class="sub" style="margin-bottom:10px">'+t('Blocked by')+' '+e(S.byDate[k])+'</p>';
   dd.c.concat(dd.q).forEach(function(o){h+='<button class="oc" style="margin-bottom:10px" data-o="'+o.id+'"><div class="r1"><b>'+e(o.customer.name)+'</b><span class="st st-'+o.status+'">'+t(o.status)+'</span></div><div class="r2">'+e(o.event.time)+' · '+e(o.event.guests)+' '+t('guests')+' · '+e(o.package)+(o.confirmedBy&&o.status==='confirmed'?' · '+t('Confirmed by')+' '+e(o.confirmedBy):'')+'</div></button>'});
@@ -402,7 +415,7 @@ document.addEventListener('click',function(ev){
   if(g('[data-savenote]')){saveNote();return}
   if(g('[data-csv]')){csvDl();return}
   if((n=g('[data-cv]'))){S.cv=n.dataset.cv;an(false);vCal();return}
-  if((n=g('[data-cm]'))){var st=+n.dataset.cm;if(S.cv==='week'){S.wk=new Date(S.wk.getFullYear(),S.wk.getMonth(),S.wk.getDate()+7*st)}else{S.cal.m+=st;if(S.cal.m<0){S.cal.m=11;S.cal.y--}if(S.cal.m>11){S.cal.m=0;S.cal.y++}}an(false);vCal();return}
+  if((n=g('[data-cm]'))){var st=+n.dataset.cm;if(S.cv==='week'){S.wk=new Date(S.wk.getFullYear(),S.wk.getMonth(),S.wk.getDate()+7*st)}else{S.cal.m+=st;if(S.cal.m<0){S.cal.m=12;S.cal.y--}if(S.cal.m>12){S.cal.m=0;S.cal.y++}}an(false);vCal();return}
   if((n=g('[data-cy]'))){S.cal.y+=+n.dataset.cy;an(false);vCal();return}
   if((n=g('[data-mon]'))){S.cal.m=+n.dataset.mon;S.cv='month';an(false);vCal();return}
   if((n=g('[data-d]'))){openDay(n.dataset.d);return}

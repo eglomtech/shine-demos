@@ -320,16 +320,16 @@ img,svg,video{max-width:100%}
     <h2>How it works</h2>
     <div class="steps">
       <p><i>1</i><span>Pick a menu that fits your event.</span></p>
-      <p><i>2</i><span>Tell us the date, place and number of guests (50 or more).</span></p>
+      <p><i>2</i><span>Tell us the date, place and number of guests (100 or more).</span></p>
       <p><i>3</i><span>We call you to agree the final price. You pay later.</span></p>
     </div>
     <h2>Questions</h2>
     <div class="faq">
-      <details><summary>How far ahead should I book?</summary><p>Please choose a date at least 7 days from today. For big events, earlier is better.</p></details>
-      <details><summary>What is the minimum number of guests?</summary><p>We cater for 50 guests or more.</p></details>
+      <details><summary>How far ahead should I book?</summary><p>You can order for any day. For big events, booking earlier is better.</p></details>
+      <details><summary>What is the minimum number of guests?</summary><p>We cater for 100 guests or more.</p></details>
       <details><summary>Can I change the dishes in a menu?</summary><p>Our menus are set packages with a fixed price per person or per plate. For special requests, please call us.</p></details>
       <details><summary>How does payment work?</summary><p>You pay later. We call you first to agree the final price, and you pay after we confirm.</p></details>
-      <details><summary>Where are you?</summary><p>Bole Medhaniyalem, Morning Star Mall (3rd Floor), Addis Ababa.</p></details>
+      <details><summary>Where are you?</summary><p>Bole Medhaniyalem, Morning Star Mall (3rd Floor), Office number 313A, Addis Ababa.</p></details>
     </div>
   </section>
 
@@ -358,7 +358,7 @@ img,svg,video{max-width:100%}
         <label for="f-type">Event type</label>
         <select id="f-type"><option value="">Choose…</option><option>Wedding</option><option>Corporate event</option><option>Birthday or private party</option><option>Engagement or family event</option><option>Other</option></select>
         <div class="row"><div><label for="f-date">Date</label><input type="date" id="f-date"></div><div><label for="f-time">Start time</label><input type="time" id="f-time"></div></div>
-        <div class="row"><div><label for="f-guests">Guests (50 or more)</label><input type="number" inputmode="numeric" id="f-guests" min="50" placeholder="50"></div><div><label for="f-fast">Fasting guests</label><input type="number" inputmode="numeric" id="f-fast" min="0" placeholder="0"></div></div>
+        <div class="row"><div><label for="f-guests">Guests (100 or more)</label><input type="number" inputmode="numeric" id="f-guests" min="100" placeholder="100"></div><div><label for="f-fast">Fasting guests</label><input type="number" inputmode="numeric" id="f-fast" min="0" placeholder="0"></div></div>
       </fieldset></div>
       <div class="stp" data-step="2"><fieldset><legend>Place and you</legend>
         <label for="f-venue">Venue or address</label><input id="f-venue" autocomplete="street-address" placeholder="Hall name, area, city">
@@ -389,11 +389,11 @@ img,svg,video{max-width:100%}
 
 <div id="shade"></div>
 <div class="sheet" id="sh-call"><h3>Call Shine Catering</h3>
+  <a class="call" href="tel:+251951733333">0951 73 33 33<span>Tap to call</span></a>
   <a class="call" href="tel:+251911409797">0911 40 97 97<span>Tap to call</span></a>
   <a class="call" href="tel:+251951833333">0951 83 33 33<span>Tap to call</span></a>
-  <a class="call" href="tel:+251951733333">0951 73 33 33<span>Tap to call</span></a>
   <a class="call" href="https://wa.me/251911409797" target="_blank" rel="noopener">WhatsApp<span>Chat with us</span></a>
-  <a class="call" href="https://www.google.com/maps/search/?api=1&query=Morning+Star+Mall+Bole+Addis+Ababa" target="_blank" rel="noopener">Find us on the map<span>Morning Star Mall, 3rd floor</span></a>
+  <a class="call" href="https://www.google.com/maps/search/?api=1&query=Morning+Star+Mall+Bole+Addis+Ababa" target="_blank" rel="noopener">Find us on the map<span>Morning Star Mall, 3rd floor, Office number 313A</span></a>
 </div>
 
 
@@ -465,7 +465,7 @@ var AM={
 'Buffets, cocktail receptions and breakfasts for weddings, meetings and parties.':'ለሠርግ፣ ለስብሰባ እና ለግል ድግስ የሚሆኑ ቡፌ፣ ኮክቴል እና የቁርስ ምግቦች።',
 'See our menus':'ምናሌዎቻችንን ይመልከቱ','Our menus':'ምናሌዎቻችን','How it works':'እንዴት ይሠራል',
 'Pick a menu and change any dish you like.':'ምናሌ ይምረጡ፤ የፈለጉትን ምግብ ይቀይሩ።',
-'Tell us the date, place and number of guests (50 or more).':'ቀኑን፣ ቦታውን እና የእንግዶችን ብዛት (ከ50 በላይ) ይንገሩን።',
+'Tell us the date, place and number of guests (100 or more).':'ቀኑን፣ ቦታውን እና የእንግዶችን ብዛት (ከ100 በላይ) ይንገሩን።',
 'We call you to agree the final price. You pay later.':'የመጨረሻውን ዋጋ ለመስማማት እንደውልልዎታለን። ክፍያው በኋላ ይፈጸማል።',
 'Your own dishes':'የራስዎ ምግቦች','Your dishes':'የራስዎ ምግቦች',
 'Want a dish that is not on the menu? Add it here and we will include it in your quote.':'በምናሌው ውስጥ የሌለ ምግብ ይፈልጋሉ? እዚህ ይጨምሩት፤ በዋጋ ጥያቄዎ ውስጥ እናካትተዋለን።',
@@ -473,7 +473,7 @@ var AM={
 'Choose the menu you want, then come back to send your request.':'የሚፈልጉትን ምናሌ ይምረጡ፤ ከዚያ ተመልሰው ጥያቄዎን ይላኩ።',
 'Choose a menu':'ምናሌ ይምረጡ','Your request':'ጥያቄዎ','Your event':'ዝግጅትዎ','Place and service':'ቦታ እና አገልግሎት','About you':'ስለ እርስዎ','Event':'ዝግጅት',
 'Event type':'የዝግጅቱ ዓይነት','Date':'ቀን','Start time':'የመጀመሪያ ሰዓት','Venue or address':'የዝግጅቱ ቦታ ወይም አድራሻ','Service':'አገልግሎት',
-'Guests (50 or more)':'የእንግዶች ብዛት (ከ50 በላይ)','Fasting guests':'የሚጾሙ እንግዶች','Dietary or allergy notes':'የአመጋገብ ወይም የአለርጂ ማስታወሻ',
+'Guests (100 or more)':'የእንግዶች ብዛት (ከ100 በላይ)','Fasting guests':'የሚጾሙ እንግዶች','Dietary or allergy notes':'የአመጋገብ ወይም የአለርጂ ማስታወሻ',
 'Special requests':'ልዩ ጥያቄዎች','Full name':'ሙሉ ስም','Phone':'ስልክ','Best time for us to call':'ለመደወል የሚመችዎ ሰዓት',
 'Choose…':'ይምረጡ…','Wedding':'ሠርግ','Corporate event':'የድርጅት ዝግጅት','Birthday or private party':'የልደት ወይም የግል ድግስ','Engagement or family event':'የቀለበት ወይም የቤተሰብ ዝግጅት','Other':'ሌላ',
 'Delivery':'ማድረስ','Delivery with setup and staff':'ማድረስ ከዝግጅት እና ከአስተናጋጆች ጋር','Pickup':'ራስዎ መውሰድ',
@@ -491,16 +491,16 @@ var AM={
 'Already included':'አስቀድሞ ተካቷል','adds a second serving':'ሁለተኛ ድርሻ ይጨምራል','Continue to request':'ወደ ጥያቄ ቀጥል','change':'ለውጥ','changes':'ለውጦች',
 'Menu as listed, no changes':'ምናሌው እንዳለ፣ ምንም ለውጥ የለም','to the menu':'በምናሌው ላይ','Edit dishes':'ምግቦችን አስተካክል','Removed:':'የተወገደ፦','Swapped:':'የተቀየረ፦','Added:':'የተጨመረ፦',
 'Step':'ደረጃ','of':'ከ','Sending…':'በመላክ ላይ…','Try again':'እንደገና ሞክር',
-'We need at least 50 guests for an order.':'ለአንድ ትዕዛዝ ቢያንስ 50 እንግዶች ያስፈልጉናል።','Please fill in the highlighted fields.':'እባክዎ ቀይ ምልክት የተደረገባቸውን መስኮች ይሙሉ።',
-'Please fill in the highlighted fields. We need at least 50 guests and a valid phone number.':'እባክዎ ቀይ ምልክት የተደረገባቸውን መስኮች ይሙሉ። ቢያንስ 50 እንግዶች እና ትክክለኛ ስልክ ቁጥር ያስፈልጋሉ።',
+'We need at least 100 guests for an order.':'ለአንድ ትዕዛዝ ቢያንስ 100 እንግዶች ያስፈልጉናል።','Please fill in the highlighted fields.':'እባክዎ ቀይ ምልክት የተደረገባቸውን መስኮች ይሙሉ።',
+'Please fill in the highlighted fields. We need at least 100 guests and a valid phone number.':'እባክዎ ቀይ ምልክት የተደረገባቸውን መስኮች ይሙሉ። ቢያንስ 100 እንግዶች እና ትክክለኛ ስልክ ቁጥር ያስፈልጋሉ።',
 'We could not send your request. Check your connection and try again, or call us.':'ጥያቄዎን መላክ አልቻልንም። ግንኙነትዎን ይፈትሹና እንደገና ይሞክሩ፣ ወይም ይደውሉልን።',
-'This date is not available. Please choose another date.':'ይህ ቀን አይገኝም። እባክዎ ሌላ ቀን ይምረጡ።','Please choose a date at least 7 days from today.':'እባክዎ ከዛሬ ቢያንስ 7 ቀናት በኋላ ያለ ቀን ይምረጡ።',
-'WhatsApp':'ዋትስአፕ','Chat with us':'ያውሩን','Find us on the map':'በካርታ ያግኙን','Morning Star Mall, 3rd floor':'ሞርኒንግ ስታር ሞል፣ 3ኛ ፎቅ','Call us':'ይደውሉልን','Request number':'የጥያቄ ቁጥር','Questions':'ጥያቄዎች',
-'How far ahead should I book?':'ምን ያህል ቀደም ብዬ ማስያዝ አለብኝ?','Please choose a date at least 7 days from today. For big events, earlier is better.':'ከዛሬ ቢያንስ 7 ቀናት በኋላ ያለ ቀን ይምረጡ። ለትልልቅ ዝግጅቶች ቀደም ብሎ ማዘዝ ይሻላል።',
-'What is the minimum number of guests?':'ቢያንስ ስንት እንግዶች ያስፈልጋሉ?','We cater for 50 guests or more.':'ለ50 እና ከዚያ በላይ እንግዶች እናዘጋጃለን።',
+'This date is not available. Please choose another date.':'ይህ ቀን አይገኝም። እባክዎ ሌላ ቀን ይምረጡ።','Please choose today or a later date.':'እባክዎ ዛሬን ወይም ከዛሬ በኋላ ያለ ቀን ይምረጡ።',
+'WhatsApp':'ዋትስአፕ','Chat with us':'ያውሩን','Find us on the map':'በካርታ ያግኙን','Morning Star Mall, 3rd floor, Office number 313A':'ሞርኒንግ ስታር ሞል፣ 3ኛ ፎቅ፣ ቢሮ ቁጥር 313A','Call us':'ይደውሉልን','Request number':'የጥያቄ ቁጥር','Questions':'ጥያቄዎች',
+'How far ahead should I book?':'ምን ያህል ቀደም ብዬ ማስያዝ አለብኝ?','You can order for any day. For big events, booking earlier is better.':'ለማንኛውም ቀን ማዘዝ ይችላሉ። ለትልልቅ ዝግጅቶች ቀደም ብሎ ማዘዝ ይሻላል።',
+'What is the minimum number of guests?':'ቢያንስ ስንት እንግዶች ያስፈልጋሉ?','We cater for 100 guests or more.':'ለ100 እና ከዚያ በላይ እንግዶች እናዘጋጃለን።',
 'Can I change the dishes in a menu?':'በምናሌው ውስጥ ያሉትን ምግቦች መቀየር እችላለሁ?','Yes. You can swap, remove or add your own dishes. We adjust the price after we call you.':'አዎ። ምግቦችን መቀየር፣ ማስወገድ ወይም የራስዎን መጨመር ይችላሉ። ከደወልንልዎ በኋላ ዋጋውን እናስተካክላለን።',
 'How does payment work?':'ክፍያ እንዴት ይፈጸማል?','You pay later. We call you first to agree the final price, and you pay after we confirm.':'ክፍያው በኋላ ነው። መጀመሪያ እንደውልልዎና የመጨረሻውን ዋጋ እንስማማለን፤ ካረጋገጥን በኋላ ይከፍላሉ።',
-'Place and you':'ቦታና እርስዎ','Where are you?':'የት ነው የምንገኘው?','Bole Medhaniyalem, Morning Star Mall (3rd Floor), Addis Ababa.':'ቦሌ መድኃኔዓለም፣ ሞርኒንግ ስታር ሞል፣ 3ኛ ፎቅ፣ አዲስ አበባ።',
+'Place and you':'ቦታና እርስዎ','Where are you?':'የት ነው የምንገኘው?','Bole Medhaniyalem, Morning Star Mall (3rd Floor), Office number 313A, Addis Ababa.':'ቦሌ መድኃኔዓለም፣ ሞርኒንግ ስታር ሞል፣ 3ኛ ፎቅ፣ ቢሮ ቁጥር 313A፣ አዲስ አበባ።',
 'Starter':'ምግብ መክፈቻ','Dressings':'ድስቶች እና ማጣፈጫዎች','Main dishes':'ዋና ምግቦች','Kitfo corner':'የክትፎ ማዕዘን','Ethiopia corner':'የኢትዮጵያ ማዕዘን','Ethiopian corner':'የኢትዮጵያ ማዕዘን','Desserts':'ጣፋጮች','Live station':'ቀጥታ የማብሰያ ጣቢያ','Salads':'ሰላጣዎች','Traditional':'ባህላዊ','Savory bites':'ጨዋማ ንክሻዎች','International corner':'የዓለም አቀፍ ማዕዘን',
 'Prestige Buffet':'ፕሪስቲጅ ቡፌ','Standard Kitfo Menu':'ሻይን ስታንዳርድ ክትፎ ኮርነር','Signature Kitfo Menu':'ሻይን ሲግኔቸር ክትፎ ኮርነር','Traditional Menu':'ባህላዊ ምግቦች',
 'per plate':'በአንድ ሳህን','per person':'በአንድ ሰው','ETB':'ብር','Request this package':'ይህን ጥቅል ይጠይቁ','View menu':'ምናሌውን ይመልከቱ','Final price confirmed when we call you':'የመጨረሻው ዋጋ ስንደውልልዎ ይረጋገጣል',
@@ -567,7 +567,7 @@ document.addEventListener('click',function(e){
 /* ---- menu lists ---- */
 var PKG_IMG={std:'images/packages/standard-buffet.jpg',sig:'images/packages/signature-buffet.jpg',fast:'images/packages/fasting-buffet.jpg',cock:'images/packages/premier-cocktail-reception.jpg',brk:'images/packages/continental-breakfast.jpg'};
 function pimg(p){return PKG_IMG[p.id]||'images/packages/'+slug(p.n)+'.jpg'}
-function listHTML(){return P.map(function(p){var c=COL[p.id]||COL.std;return '<button class="pk" data-open="'+p.id+'" style="--a:'+c[0]+';--b:'+c[1]+'"><svg class="pi" viewBox="0 0 40 30"><use href="#bowl"/></svg><span class="cnt">'+count(p)+' '+t('dishes')+'</span><div class="pt"><h3>'+t(p.n)+'</h3><span>'+t(p.inc)+'</span><em class="pp">'+pricePill(p)+'</em></div></button>'}).join('')}
+function listHTML(){return P.map(function(p){var c=COL[p.id]||COL.std;return '<button class="pk" data-open="'+p.id+'" style="--a:'+c[0]+';--b:'+c[1]+'"><svg class="pi" viewBox="0 0 40 30"><use href="#bowl"/></svg><div class="pt"><h3>'+t(p.n)+'</h3><span>'+t(p.inc)+'</span><em class="pp">'+pricePill(p)+'</em></div></button>'}).join('')}
 function renderHome(){
   if(!P||!P.length)P=P_BUILTIN;
   $('#homeList').innerHTML=listHTML();
@@ -633,9 +633,9 @@ $('#f-date').min=today.toISOString().slice(0,10);
 var step=1,SM={1:['type','date','time','guests'],2:['venue','name','phone']},LBL=['Event','Place and you'];
 function stepOf(k){for(var n in SM)if(SM[n].indexOf(k)>-1)return +n}
 var BLOCKED=[];
-function minDate(){var d=new Date();d.setDate(d.getDate()+7);return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
-function dateMsg(bad){if(bad.length===1&&bad[0]==='date'){var v=$('#f-date').value;return t(v&&BLOCKED.indexOf(v)>-1?'This date is not available. Please choose another date.':'Please choose a date at least 7 days from today.')}return ''}
-function isBad(k){var v=$('#f-'+k).value.trim();if(k==='date')return !v||v<minDate()||BLOCKED.indexOf(v)>-1;if(k==='guests')return !(+v>=50);if(k==='phone')return v.replace(/\D/g,'').length<9;return !v}
+function minDate(){var d=new Date();return d.getFullYear()+'-'+('0'+(d.getMonth()+1)).slice(-2)+'-'+('0'+d.getDate()).slice(-2)}
+function dateMsg(bad){if(bad.length===1&&bad[0]==='date'){var v=$('#f-date').value;return t(v&&BLOCKED.indexOf(v)>-1?'This date is not available. Please choose another date.':'Please choose today or a later date.')}return ''}
+function isBad(k){var v=$('#f-'+k).value.trim();if(k==='date')return !v||v<minDate()||BLOCKED.indexOf(v)>-1;if(k==='guests')return !(+v>=100);if(k==='phone')return v.replace(/\D/g,'').length<9;return !v}
 function setStep(n){
   step=n;
   $$('#reqForm .stp').forEach(function(x){x.classList.toggle('on',+x.dataset.step===n)});
@@ -652,7 +652,7 @@ $('#stNext').addEventListener('click',function(){
   var bad=SM[step].filter(isBad),err=$('#err');
   if(bad.length){
     bad.forEach(function(k){$('#f-'+k).classList.add('bad')});
-    err.textContent=dateMsg(bad)||t(bad.length===1&&bad[0]==='guests'?'We need at least 50 guests for an order.':'Please fill in the highlighted fields.');
+    err.textContent=dateMsg(bad)||t(bad.length===1&&bad[0]==='guests'?'We need at least 100 guests for an order.':'Please fill in the highlighted fields.');
     err.classList.add('on');$('#f-'+bad[0]).focus();return;
   }
   setStep(step+1);window.scrollTo(0,0);
@@ -664,13 +664,13 @@ $('#reqForm').addEventListener('submit',function(e){
   var f=function(id){return $('#f-'+id).value.trim()},bad=[],need={type:'event type',date:'date',time:'start time',venue:'venue',name:'name'};
   $$('#reqForm .bad').forEach(function(x){x.classList.remove('bad')});
   for(var k in need)if(!f(k))bad.push(k);
-  if(!(+f('guests')>=50))bad.push('guests');
+  if(!(+f('guests')>=100))bad.push('guests');
   if(f('phone').replace(/\D/g,'').length<9)bad.push('phone');
   var err=$('#err');
   if(bad.length){
     bad.forEach(function(k){$('#f-'+k).classList.add('bad')});
     setStep(stepOf(bad[0]));
-    err.textContent=dateMsg(bad)||t(bad.indexOf('guests')>-1&&bad.length===1?'We need at least 50 guests for an order.':'Please fill in the highlighted fields. We need at least 50 guests and a valid phone number.');
+    err.textContent=dateMsg(bad)||t(bad.indexOf('guests')>-1&&bad.length===1?'We need at least 100 guests for an order.':'Please fill in the highlighted fields. We need at least 100 guests and a valid phone number.');
     err.classList.add('on');$('#f-'+bad[0]).focus();return;
   }
   err.classList.remove('on');
