@@ -281,7 +281,7 @@ img,svg,video{max-width:100%}
 /* show-only menus: coffee and bar setup (video backgrounds, no ordering) */
 .shw{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:4px 0 18px}
 .sk{position:relative;overflow:hidden;isolation:isolate;aspect-ratio:3/4;border-radius:20px;display:flex;flex-direction:column;justify-content:flex-end;color:var(--cream);background:linear-gradient(155deg,var(--a),var(--b));box-shadow:0 12px 28px rgba(38,40,43,.2)}
-.sk video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;pointer-events:none}
+.sk img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;pointer-events:none}
 .sk::after{content:"";position:absolute;inset:auto 0 0 0;height:70%;z-index:0;background:linear-gradient(transparent,rgba(16,16,18,.55) 45%,rgba(16,16,18,.88));pointer-events:none}
 .sk .pt{padding:12px;z-index:1}.sk .pt::after{display:none}
 .sk .pt h3{font-size:clamp(19px,5.2vw,26px)}
@@ -329,8 +329,8 @@ img,svg,video{max-width:100%}
     <div class="rail" id="homeList"></div>
     <h2>Coffee and bar setup</h2>
     <div class="shw" id="showList">
-      <div class="sk" style="--a:#6B3E26;--b:#24140C"><video muted loop playsinline preload="metadata" disablepictureinpicture aria-hidden="true"><source src="images/showcase/coffee.mp4" type="video/mp4"></video><div class="pt"><h3>Coffee Setup</h3><span>Fresh coffee served at your event.</span></div></div>
-      <div class="sk" style="--a:#3B2A52;--b:#140E1E"><video muted loop playsinline preload="metadata" disablepictureinpicture aria-hidden="true"><source src="images/showcase/bar-setup.mp4" type="video/mp4"></video><div class="pt"><h3>Bar Setup</h3><span>A styled bar for your reception.</span></div></div>
+      <div class="sk" style="--a:#6B3E26;--b:#24140C"><img src="images/showcase/coffee.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="pt"><h3>Coffee Setup</h3><span>Fresh coffee served at your event.</span></div></div>
+      <div class="sk" style="--a:#3B2A52;--b:#140E1E"><img src="images/showcase/bar-setup.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="pt"><h3>Bar Setup</h3><span>A styled bar for your reception.</span></div></div>
     </div>
     <h2>How it works</h2>
     <div class="steps">
@@ -871,16 +871,7 @@ function countUp(card){
   if(tp)window.addEventListener('scroll',function(){tp.classList.toggle('sc',window.scrollY>8)},{passive:true});
 })();
 
-/* ---- show-only menus: video plays only while on screen ---- */
-(function(){
-  var vs=$$('#showList video');if(!vs.length)return;
-  var vio=window.IntersectionObserver?new IntersectionObserver(function(es){es.forEach(function(e){var v=e.target;if(e.isIntersecting){var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}else v.pause()})},{threshold:.25}):null;
-  vs.forEach(function(v){
-    v.muted=true;
-    if(vio)vio.observe(v);else{var pr=v.play();if(pr&&pr.catch)pr.catch(function(){})}
-  });
-  reveal($('#showList'));
-})();
+reveal($('#showList'));
 loadCloud();
 </script>
 </body>
