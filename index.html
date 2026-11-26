@@ -15,7 +15,7 @@
 <link rel="preconnect" href="https://firestore.googleapis.com" crossorigin>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=Noto+Sans+Ethiopic:wght@400;500;700;800&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@1,600&family=DM+Sans:wght@400;500;700&display=swap" rel="stylesheet">
 <style>
 :root{--cream:#FBF7EE;--sand:#F1EADB;--char:#26282B;--gold:#C9962B;--line:#E4DBC7;--bad:#B3392F;--k:1}
 *{box-sizing:border-box;margin:0}
@@ -37,7 +37,6 @@ button{cursor:pointer;border:0;background:none}
 .bowl{fill:var(--char);opacity:0;transform:translateY(14px);animation:rise calc(.5s*var(--k)) ease-out calc(1.7s*var(--k)) forwards}
 .bowl-line{stroke:var(--gold);stroke-width:3;stroke-linecap:round;stroke-dasharray:1;stroke-dashoffset:1;animation:draw calc(.4s*var(--k)) ease-out calc(2s*var(--k)) forwards}
 .arc-text{opacity:0;fill:var(--char);animation:fade calc(.6s*var(--k)) ease-out calc(1.9s*var(--k)) forwards}
-.am{font-family:"Noto Sans Ethiopic",sans-serif;font-weight:800;font-size:27px}
 .en{font-family:"Cormorant Garamond",Georgia,serif;font-style:italic;font-weight:600;font-size:30px;letter-spacing:2px}
 .glow{opacity:0;transform-box:fill-box;transform-origin:center;animation:glow calc(.9s*var(--k)) ease-out calc(2.1s*var(--k)) forwards}
 #bar{position:absolute;left:50%;bottom:11vh;width:min(46vw,220px);height:3px;background:rgba(38,40,43,.12);transform:translateX(-50%);border-radius:2px;overflow:hidden;opacity:0;transition:opacity .3s}
@@ -160,9 +159,6 @@ input,select,textarea{padding:15px 16px;border-radius:14px}
 #top{display:grid;grid-template-columns:1fr auto 1fr;gap:8px}
 #top .rt{justify-self:end;display:flex;gap:8px;align-items:center}
 .brand{display:flex;align-items:center;gap:8px}.brand b{white-space:nowrap}.tl{height:40px;width:40px;object-fit:contain}
-.lg{height:42px;min-width:42px;padding:0 12px;border-radius:999px;background:#fff;border:1px solid var(--line);font-weight:700;font-size:15px;font-family:"Noto Sans Ethiopic","DM Sans",sans-serif}
-html[lang=am] body{font-family:"Noto Sans Ethiopic","DM Sans",system-ui,sans-serif}
-html[lang=am] h1,html[lang=am] h2,html[lang=am] h3,html[lang=am] legend,html[lang=am] .nope{font-family:"Noto Sans Ethiopic",system-ui,sans-serif;font-style:normal;font-weight:700}
 #offline{display:none;background:var(--char);color:var(--cream);text-align:center;font-size:13px;padding:7px 12px}#offline.on{display:block}
 #inst{margin-top:12px;display:none}
 #swQ{position:sticky;top:0;z-index:2;margin-bottom:10px}
@@ -209,7 +205,6 @@ input,select,textarea{font-size:16px;min-height:50px}textarea{min-height:96px}
 .ib{width:44px;height:44px}.pills button{min-height:40px}.lg{min-height:44px}
 .row{grid-template-columns:repeat(auto-fit,minmax(min(100%,150px),1fr))}
 .scr{padding-left:max(16px,env(safe-area-inset-left));padding-right:max(16px,env(safe-area-inset-right))}
-html[lang=am] body{line-height:1.6}html[lang=am] .hero h1,html[lang=am] .dh h1{line-height:1.25}
 img,svg,video{max-width:100%}
 @media(min-width:700px){.scr{padding-left:32px;padding-right:32px}}
 @media(max-width:360px){.btn{padding-left:18px;padding-right:18px}.nav2{gap:8px}}
@@ -277,16 +272,6 @@ img,svg,video{max-width:100%}
 .pk .pp{font-size:12.5px;padding:4px 12px}
 .cnt{font-size:12px;padding:5px 11px}
 }
-
-/* show-only menus: coffee and bar setup (video backgrounds, no ordering) */
-.shw{display:grid;grid-template-columns:repeat(2,minmax(0,1fr));gap:12px;padding:4px 0 18px}
-.sk{position:relative;overflow:hidden;isolation:isolate;aspect-ratio:3/4;border-radius:20px;display:flex;flex-direction:column;justify-content:flex-end;color:var(--cream);background:linear-gradient(155deg,var(--a),var(--b));box-shadow:0 12px 28px rgba(38,40,43,.2)}
-.sk img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-1;pointer-events:none}
-.sk::after{content:"";position:absolute;inset:auto 0 0 0;height:70%;z-index:0;background:linear-gradient(transparent,rgba(16,16,18,.55) 45%,rgba(16,16,18,.88));pointer-events:none}
-.sk .pt{padding:12px;z-index:1}.sk .pt::after{display:none}
-.sk .pt h3{font-size:clamp(19px,5.2vw,26px)}
-@media(min-width:700px){.shw{gap:16px}.sk{aspect-ratio:4/3;border-radius:28px}.sk .pt{padding:20px}.sk .pt h3{font-size:28px}}
-@media(max-width:359px){.shw{grid-template-columns:1fr}.sk{aspect-ratio:16/10}}
 </style>
 </head>
 <body>
@@ -311,27 +296,21 @@ img,svg,video{max-width:100%}
     <path class="mono c" pathLength="1" d="M246 224 C214 198 196 252 224 268 C238 276 248 270 252 262"/>
     <path class="bowl" d="M156 286 L244 286 L240 292 C236 306 220 314 200 314 C180 314 164 306 160 292 Z"/>
     <path class="bowl-line" pathLength="1" d="M170 324 L230 324"/>
-    <text class="arc-text am"><textPath href="#top" startOffset="50%" text-anchor="middle">ሻይን የምግብ ዝግጅት</textPath></text>
     <text class="arc-text en"><textPath href="#bot" startOffset="50%" text-anchor="middle">SHINE CATERING</textPath></text>
   </svg>
   <div id="bar"><i></i></div><div id="ldTxt" aria-live="polite"></div>
 </div>
 
 <div id="app">
-  <header id="top"><button class="ib" id="hBack" aria-label="Back" style="visibility:hidden"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><span class="brand"><img class="tl" src="images/logo.png" alt="" onerror="this.style.display='none'"><b>Shine Catering</b></span><div class="rt"><button class="lg" id="lang" aria-label="Language">አማ</button><button class="ib gold" data-sheet="call" aria-label="Call us"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.500a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></button></div></header>
+  <header id="top"><button class="ib" id="hBack" aria-label="Back" style="visibility:hidden"><svg viewBox="0 0 24 24"><path d="M15 5l-7 7 7 7"/></svg></button><span class="brand"><img class="tl" src="images/logo.png" alt="" onerror="this.style.display='none'"><b>Shine Catering</b></span><div class="rt"><button class="ib gold" data-sheet="call" aria-label="Call us"><svg viewBox="0 0 24 24"><path d="M5 4h4l2 5-2.5 1.500a11 11 0 005 5L15 13l5 2v4a2 2 0 01-2 2A16 16 0 013 6a2 2 0 012-2z"/></svg></button></div></header>
   <div id="offline" role="status">You are offline. You can still browse the menus.</div>
   <!-- HOME -->
   <section class="scr on" id="s-home">
-    <div class="hero"><svg class="hb" viewBox="0 0 40 30"><use href="#bowl"/></svg><img class="hl" src="images/logo.png" alt="" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'"><div class="hin"><span class="eyebrow">Addis Ababa catering</span><h1>Where elegance<br>meets excellence</h1><p>For over 20 years, we have transformed special occasions into extraordinary experiences through exquisite cuisine and impeccable service.</p><button class="btn" data-scroll="homeList">See our menus</button></div></div>
+    <div class="hero"><svg class="hb" viewBox="0 0 40 30"><use href="#bowl"/></svg><img class="hl" src="images/logo.png" alt="" onload="this.previousElementSibling.style.display='none'" onerror="this.style.display='none'"><div class="hin"><span class="eyebrow">Shine Catering</span><h1>Where elegance<br>meets excellence</h1><p>For over 20 years, we have transformed special occasions into extraordinary experiences through exquisite cuisine and impeccable service.</p><button class="btn" data-scroll="homeList">See our menus</button></div></div>
     <button class="btn line wide" id="inst" type="button">Install app</button>
     <p class="sub sm" id="iosHint" style="display:none;margin-top:8px">To install: tap Share, then Add to Home Screen</p>
     <h2>Our menus</h2>
     <div class="rail" id="homeList"></div>
-    <h2>Coffee and bar setup</h2>
-    <div class="shw" id="showList">
-      <div class="sk" style="--a:#6B3E26;--b:#24140C"><img src="images/showcase/coffee.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="pt"><h3>Coffee Setup</h3><span>Fresh coffee served at your event.</span></div></div>
-      <div class="sk" style="--a:#3B2A52;--b:#140E1E"><img src="images/showcase/bar-setup.jpg" alt="" loading="lazy" onerror="this.style.display='none'"><div class="pt"><h3>Bar Setup</h3><span>A styled bar for your reception.</span></div></div>
-    </div>
     <h2>How it works</h2>
     <div class="steps">
       <p><i>1</i><span>Pick a menu that fits your event.</span></p>
@@ -408,6 +387,7 @@ img,svg,video{max-width:100%}
   <a class="call" href="tel:+251911409797">0911 40 97 97<span>Tap to call</span></a>
   <a class="call" href="tel:+251951833333">0951 83 33 33<span>Tap to call</span></a>
   <a class="call" href="https://wa.me/251911409797" target="_blank" rel="noopener">WhatsApp<span>Chat with us</span></a>
+  <a class="call" href="https://t.me/YOUR_USERNAME" target="_blank" rel="noopener">Telegram<span>Chat with us</span></a>
   <a class="call" href="https://www.google.com/maps/search/?api=1&query=Morning+Star+Mall+Bole+Addis+Ababa" target="_blank" rel="noopener">Find us on the map<span>Morning Star Mall, 3rd floor, Office number 313A</span></a>
 </div>
 
@@ -443,7 +423,7 @@ var P=[
 {id:'fast',price:1950,unit:'person',n:'Fasting Buffet',inc:'Includes soft drinks and water',s:{
  'Salads':'Mixed Green Salad|Tomato and Cucumber|Mixed Serial|Hot Dressing|Mustard and Tartar Sauce|Tuna Salad|Avocado Salad',
  'Main dishes':'Fasting Lasagna|Fasting Pasta ala Furno|Fish Cutlet|Fish Goulash|Rice with Vegetable|Steamed Vegetable|Roasted Vegetable|Penne with Tomato Sauce',
- 'Traditional':'ምስር ክክ ወጥ|አተር ክክ አልጫ ወጥ|ሽንብራ ዓሣ ወጥ|ሽሮ ወጥ|ጎመን ወጥ|ፍሶሊያ ካሮት|ቡጥጫ|ሱፍ ፍትፍት|አዚፍ|Nech Injera|Key Injera|Mini Bread',
+ 'Traditional':'Misir Kik Wot|Ater Kik Alicha Wot|Shimbra Asa Wot|Shiro Wot|Gomen Wot|Fasolia Carrot|Butecha|Suf Fitfit|Azif|Nech Injera|Key Injera|Mini Bread',
  'Desserts':'Mixed Fruit|Fasting Chocolate Cake|Fruit Tart|Mocha Cake|Mini Brownies|Pyramid Cake|Cream Tart|Sweet Cookies'}},
 {id:'cock',price:2150,unit:'person',n:'Premier Cocktail Reception',inc:'Includes bottled water, soft drinks, coffee and tea',s:{
  'Savory bites':'Herb-Crusted Fish Cutlets|Crispy Golden Fish Fingers|Cheese Balls on Skewers|Classic Savory Meatballs|Traditional Scotch Eggs|Tender Beef Piccata Medallions|Artisan Mini Pizza Bites|Chicken Tenders|Crispy Pan-Fried Fish Fillets|Hot and Cold Elegant Canapés|Gourmet Miniature Burgers (Sliders)|Marinated Chicken Skewers (Chicken Kebabs)|Honey BBQ Glazed Meatballs|Tomato and Basil Bruschetta Crostini|Classic Deviled Eggs with Paprika Dusting',
@@ -473,82 +453,13 @@ var P_BUILTIN=P;/* the menu can never be empty: if anything goes wrong we fall b
 var $=function(s,r){return(r||document).querySelector(s)},$$=function(s,r){return Array.prototype.slice.call((r||document).querySelectorAll(s))};
 var esc=function(t){var d=document.createElement('div');d.textContent=t;return d.innerHTML};
 var pkg=null,items=[],custom=[],last={},cur='home';
-/* ---- language: English and Amharic ---- */
-var LANG='en';try{LANG=localStorage.getItem('shine_lang')==='am'?'am':'en'}catch(e){}
-var AM={
-'Where elegance':'ውበት','meets excellence':'ከብቃት ጋር የሚገናኝበት','For over 20 years, we have transformed special occasions into extraordinary experiences through exquisite cuisine and impeccable service.':'ከ20 ዓመታት በላይ ልዩ ዝግጅቶችን በምርጥ ምግብና እንከን በሌለው አገልግሎት ወደ ልዩ ልምዶች ስንቀይር ቆይተናል።','Addis Ababa catering':'የአዲስ አበባ ምግብ ዝግጅት','Food for your':'ለትልቅ ቀናትዎ','biggest days':'የሚመጥን ምግብ',
-'Buffets, cocktail receptions and breakfasts for weddings, meetings and parties.':'ለሠርግ፣ ለስብሰባ እና ለግል ድግስ የሚሆኑ ቡፌ፣ ኮክቴል እና የቁርስ ምግቦች።',
-'See our menus':'ምናሌዎቻችንን ይመልከቱ','Our menus':'ምናሌዎቻችን','Coffee and bar setup':'ቡና እና ባር ዝግጅት','Coffee Setup':'የቡና ዝግጅት','Bar Setup':'የባር ዝግጅት','Fresh coffee served at your event.':'በዝግጅትዎ ላይ ትኩስ ቡና ይቀርባል።','A styled bar for your reception.':'ለግብዣዎ በውበት የተዘጋጀ ባር።','How it works':'እንዴት ይሠራል',
-'Pick a menu and change any dish you like.':'ምናሌ ይምረጡ፤ የፈለጉትን ምግብ ይቀይሩ።',
-'Tell us the date, place and number of guests (100 or more).':'ቀኑን፣ ቦታውን እና የእንግዶችን ብዛት (ከ100 በላይ) ይንገሩን።',
-'We call you to agree the final price. You pay later.':'የመጨረሻውን ዋጋ ለመስማማት እንደውልልዎታለን። ክፍያው በኋላ ይፈጸማል።',
-'Your own dishes':'የራስዎ ምግቦች','Your dishes':'የራስዎ ምግቦች',
-'Want a dish that is not on the menu? Add it here and we will include it in your quote.':'በምናሌው ውስጥ የሌለ ምግብ ይፈልጋሉ? እዚህ ይጨምሩት፤ በዋጋ ጥያቄዎ ውስጥ እናካትተዋለን።',
-'Add':'ጨምር','Dish name':'የምግቡ ስም','Pick a menu first':'መጀመሪያ ምናሌ ይምረጡ',
-'Choose the menu you want, then come back to send your request.':'የሚፈልጉትን ምናሌ ይምረጡ፤ ከዚያ ተመልሰው ጥያቄዎን ይላኩ።',
-'Choose a menu':'ምናሌ ይምረጡ','Your request':'ጥያቄዎ','Your event':'ዝግጅትዎ','Place and service':'ቦታ እና አገልግሎት','About you':'ስለ እርስዎ','Event':'ዝግጅት',
-'Event type':'የዝግጅቱ ዓይነት','Date':'ቀን','Start time':'የመጀመሪያ ሰዓት','Venue or address':'የዝግጅቱ ቦታ ወይም አድራሻ','Service':'አገልግሎት',
-'Guests (100 or more)':'የእንግዶች ብዛት (ከ100 በላይ)','Fasting guests':'የሚጾሙ እንግዶች','Dietary or allergy notes':'የአመጋገብ ወይም የአለርጂ ማስታወሻ',
-'Special requests':'ልዩ ጥያቄዎች','Full name':'ሙሉ ስም','Phone':'ስልክ','Best time for us to call':'ለመደወል የሚመችዎ ሰዓት',
-'Choose…':'ይምረጡ…','Wedding':'ሠርግ','Corporate event':'የድርጅት ዝግጅት','Birthday or private party':'የልደት ወይም የግል ድግስ','Engagement or family event':'የቀለበት ወይም የቤተሰብ ዝግጅት','Other':'ሌላ',
-'Delivery':'ማድረስ','Delivery with setup and staff':'ማድረስ ከዝግጅት እና ከአስተናጋጆች ጋር','Pickup':'ራስዎ መውሰድ',
-'Hall name, area, city':'የአዳራሽ ስም፣ አካባቢ፣ ከተማ','For example, weekdays after 2 PM':'ለምሳሌ፣ በሥራ ቀናት ከሰዓት በኋላ',
-'Back':'ተመለስ','Next':'ቀጣይ','Send quote request':'የዋጋ ጥያቄ ላክ',
-'No payment now. We call you to confirm details and price.':'አሁን ክፍያ የለም። ዝርዝሩን እና ዋጋውን ለማረጋገጥ እንደውልልዎታለን።',
-'Request received':'ጥያቄዎ ደርሶናል','Thank you':'እናመሰግናለን','. We will call you to confirm details and the price.':'። ዝርዝሩን እና ዋጋውን ለማረጋገጥ እንደውልልዎታለን።',
-'Call Shine Catering':'ሻይን ካተሪንግን ይደውሉ','Start a new request':'አዲስ ጥያቄ ጀምር','Tap to call':'ለመደወል ይንኩ',
-'You are offline. You can still browse the menus.':'ከመስመር ውጭ ነዎት። ምናሌዎቹን ማየት ይችላሉ።','Install app':'መተግበሪያውን ጫን',
-'To install: tap Share, then Add to Home Screen':'ለመጫን፦ «አጋራ»ን ይንኩ፣ ከዚያ «ወደ መነሻ ማያ ገጽ አክል»ን ይምረጡ',
-'Search dishes':'ምግብ ፈልግ','No dishes found':'ምንም ምግብ አልተገኘም',
-'dishes':'ምግቦች','Includes soft drinks and water':'ለስላሳ መጠጦች እና ውሃ ተካትቷል','Includes bottled water, soft drinks, coffee and tea':'የታሸገ ውሃ፣ ለስላሳ መጠጦች፣ ቡና እና ሻይ ተካትተዋል','Tea, milk, coffee, bottled water and juices included':'ሻይ፣ ወተት፣ ቡና፣ የታሸገ ውሃ እና ጭማቂዎች ተካትተዋል',
-'Standard Buffet':'መደበኛ ቡፌ','Signature Buffet':'ልዩ ቡፌ','Fasting Buffet':'የጾም ቡፌ','Premier Cocktail Reception':'ፕሪሚየር ኮክቴል ግብዣ','Continental Breakfast':'ኮንቲኔንታል ቁርስ',
-'Swapped from':'የተቀየረው ከ','Restore':'መልስ','Remove':'አስወግድ','Swap':'ቀይር','Swap for another dish':'በሌላ ምግብ ቀይር','Remove from the menu':'ከምናሌው አስወግድ',
-'Already included':'አስቀድሞ ተካቷል','adds a second serving':'ሁለተኛ ድርሻ ይጨምራል','Continue to request':'ወደ ጥያቄ ቀጥል','change':'ለውጥ','changes':'ለውጦች',
-'Menu as listed, no changes':'ምናሌው እንዳለ፣ ምንም ለውጥ የለም','to the menu':'በምናሌው ላይ','Edit dishes':'ምግቦችን አስተካክል','Removed:':'የተወገደ፦','Swapped:':'የተቀየረ፦','Added:':'የተጨመረ፦',
-'Step':'ደረጃ','of':'ከ','Sending…':'በመላክ ላይ…','Try again':'እንደገና ሞክር',
-'We need at least 100 guests for an order.':'ለአንድ ትዕዛዝ ቢያንስ 100 እንግዶች ያስፈልጉናል።','Please fill in the highlighted fields.':'እባክዎ ቀይ ምልክት የተደረገባቸውን መስኮች ይሙሉ።',
-'Please fill in the highlighted fields. We need at least 100 guests and a valid phone number.':'እባክዎ ቀይ ምልክት የተደረገባቸውን መስኮች ይሙሉ። ቢያንስ 100 እንግዶች እና ትክክለኛ ስልክ ቁጥር ያስፈልጋሉ።',
-'We could not send your request. Check your connection and try again, or call us.':'ጥያቄዎን መላክ አልቻልንም። ግንኙነትዎን ይፈትሹና እንደገና ይሞክሩ፣ ወይም ይደውሉልን።',
-'This date is not available. Please choose another date.':'ይህ ቀን አይገኝም። እባክዎ ሌላ ቀን ይምረጡ።','Please choose today or a later date.':'እባክዎ ዛሬን ወይም ከዛሬ በኋላ ያለ ቀን ይምረጡ።',
-'WhatsApp':'ዋትስአፕ','Chat with us':'ያውሩን','Find us on the map':'በካርታ ያግኙን','Morning Star Mall, 3rd floor, Office number 313A':'ሞርኒንግ ስታር ሞል፣ 3ኛ ፎቅ፣ ቢሮ ቁጥር 313A','Call us':'ይደውሉልን','Request number':'የጥያቄ ቁጥር','Questions':'ጥያቄዎች',
-'How far ahead should I book?':'ምን ያህል ቀደም ብዬ ማስያዝ አለብኝ?','You can order for any day. For big events, booking earlier is better.':'ለማንኛውም ቀን ማዘዝ ይችላሉ። ለትልልቅ ዝግጅቶች ቀደም ብሎ ማዘዝ ይሻላል።',
-'What is the minimum number of guests?':'ቢያንስ ስንት እንግዶች ያስፈልጋሉ?','We cater for 100 guests or more.':'ለ100 እና ከዚያ በላይ እንግዶች እናዘጋጃለን።',
-'Can I change the dishes in a menu?':'በምናሌው ውስጥ ያሉትን ምግቦች መቀየር እችላለሁ?','Yes. You can swap, remove or add your own dishes. We adjust the price after we call you.':'አዎ። ምግቦችን መቀየር፣ ማስወገድ ወይም የራስዎን መጨመር ይችላሉ። ከደወልንልዎ በኋላ ዋጋውን እናስተካክላለን።',
-'How does payment work?':'ክፍያ እንዴት ይፈጸማል?','You pay later. We call you first to agree the final price, and you pay after we confirm.':'ክፍያው በኋላ ነው። መጀመሪያ እንደውልልዎና የመጨረሻውን ዋጋ እንስማማለን፤ ካረጋገጥን በኋላ ይከፍላሉ።',
-'Place and you':'ቦታና እርስዎ','Where are you?':'የት ነው የምንገኘው?','Bole Medhaniyalem, Morning Star Mall (3rd Floor), Office number 313A, Addis Ababa.':'ቦሌ መድኃኔዓለም፣ ሞርኒንግ ስታር ሞል፣ 3ኛ ፎቅ፣ ቢሮ ቁጥር 313A፣ አዲስ አበባ።',
-'Starter':'ምግብ መክፈቻ','Dressings':'ድስቶች እና ማጣፈጫዎች','Main dishes':'ዋና ምግቦች','Kitfo corner':'የክትፎ ማዕዘን','Ethiopia corner':'የኢትዮጵያ ማዕዘን','Ethiopian corner':'የኢትዮጵያ ማዕዘን','Desserts':'ጣፋጮች','Live station':'ቀጥታ የማብሰያ ጣቢያ','Salads':'ሰላጣዎች','Traditional':'ባህላዊ','Savory bites':'ጨዋማ ንክሻዎች','International corner':'የዓለም አቀፍ ማዕዘን',
-'Prestige Buffet':'ፕሪስቲጅ ቡፌ','Standard Kitfo Menu':'ሻይን ስታንዳርድ ክትፎ ኮርነር','Signature Kitfo Menu':'ሻይን ሲግኔቸር ክትፎ ኮርነር','Traditional Menu':'ባህላዊ ምግቦች',
-'per plate':'በአንድ ሳህን','per person':'በአንድ ሰው','ETB':'ብር','Request this package':'ይህን ጥቅል ይጠይቁ','View menu':'ምናሌውን ይመልከቱ','Final price confirmed when we call you':'የመጨረሻው ዋጋ ስንደውልልዎ ይረጋገጣል',
-'Starting price. We confirm the final price when we call you.':'መነሻ ዋጋ። የመጨረሻውን ዋጋ ስንደውልልዎ እናረጋግጣለን።','Traditional dishes':'ባህላዊ ምግቦች','Cheese board':'የአይብ ሰሌዳ','Ethiopian corner':'የኢትዮጵያ ማዕዘን','Kitfo corner':'የክትፎ ማዕዘን',
-'Pick a menu that fits your event.':'ለዝግጅትዎ የሚስማማ ምናሌ ይምረጡ።','Our menus are set packages with a fixed price per person or per plate. For special requests, please call us.':'ምናሌዎቻችን በአንድ ሰው ወይም በአንድ ሳህን ቋሚ ዋጋ ያላቸው ጥቅሎች ናቸው። ለልዩ ጥያቄ እባክዎ ይደውሉልን።',
-'You are offline. Connect to the internet and try again, or call us.':'ከመስመር ውጭ ነዎት። ከበይነመረብ ጋር ተገናኝተው እንደገና ይሞክሩ፣ ወይም ይደውሉልን።'
-};
-var AMD={'Tere Kitfo':'ጥሬ ክትፎ','Tere Ktifo':'ጥሬ ክትፎ','Tire Kitfo':'ጥሬ ክትፎ','Tikul Kitfo':'ትኩል ክትፎ','Tekul Kitfo':'ትኩል ክትፎ','Gomen Kitfo':'ጎመን ክትፎ','Lebleb Kitfo':'ለብለብ ክትፎ','Yebesele Kitfo':'የበሰለ ክትፎ',
-'Zemamujat Ayib':'ዝማሙጃት አይብ','Zemamogat Kitfo':'ዝማሙጃት አይብ','Ayib Zemamujat':'አይብ ዝማሞጃት','Ayib be Nech':'አይብ በነጭ','Ayib be Key':'አይብ በቀይ','Nech Ayib':'አይብ በነጭ','Key Ayib':'አይብ በቀይ',
-'Gomen be Siga':'ጎመን በስጋ','Gomen Besiga':'ጎመን በስጋ','Key Kocho':'ቀይ ቆጮ','Nech Kocho':'ነጭ ቆጮ','Kocho Key ena Nech':'ቆጮ ቀይ እና ነጭ','Kocho Neche ena Keye':'ነጭ እና ቀይ ቆጮ','Injera Key ena Nech':'እንጀራ ቀይ እና ነጭ',
-'Zilzil Tibs Key Wot':'ዝልዝል ጥብስ ቀይ ወጥ','Zilzil Tibs Alicha Wot':'ዝልዝል ጥብስ አልጫ ወጥ','Yemenchet Abish Alicha Wot':'የምንቸት አብሽ አልጫ ወጥ','Yebeg Key Wot':'የበግ ቀይ ወጥ','Doro Key Wot':'ዶሮ ቀይ ወጥ','Doro Wat Key':'ዶሮ ቀይ ወጥ','Yebeg Wat Key':'የበግ ቀይ ወጥ'};
-function t(s){return LANG==='am'&&AM[s]?AM[s]:s}
-var EXCL='#splash,#homeList,#dishes,#cList,#sum,#dSum,#pills,#swList,#dmList,#ctaBtn,#send,#stepLbl,#err,#dTitle,#dInc,#dPrice,#swTitle,#dmTitle,#dName,.brand,script,style';
-function walk(){
-  var w=document.createTreeWalker(document.body,NodeFilter.SHOW_TEXT),n,all=[];
-  while(n=w.nextNode())all.push(n);
-  all.forEach(function(n){
-    var p=n.parentElement;if(!p||p.closest(EXCL))return;
-    if(n._en===undefined){if(!n.nodeValue.trim())return;n._en=n.nodeValue}
-    var k=n._en.trim();n.nodeValue=(LANG==='am'&&AM[k])?n._en.replace(k,AM[k]):n._en;
-  });
-  $$('[placeholder]').forEach(function(e){if(e.dataset.en===undefined)e.dataset.en=e.placeholder;e.placeholder=t(e.dataset.en)});
-}
-function setLang(l){
-  LANG=l;try{localStorage.setItem('shine_lang',l)}catch(e){}
-  document.documentElement.lang=l;$('#lang').textContent=l==='am'?'EN':'አማ';
-  walk();renderHome();ctaText();$('#send').textContent=t('Send quote request');setStep(step);
-  if(pkg){$('#dTitle').textContent=t(pkg.n);$('#dInc').textContent=t(pkg.inc);$('#dPrice').textContent=pricePill(pkg);rebuildPills();renderDishes();renderReq()}
-}
+/* ---- text helper (English only) ---- */
+function t(s){return s}
 var io=window.IntersectionObserver?new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){var el=e.target;el.classList.add('in');io.unobserve(el);if(el.classList.contains('pk'))countUp(el);setTimeout(function(){el.style.transitionDelay=''},900)}})},{threshold:.12}):null;
-function reveal(root){$$('.pk,.sk,.steps p,.sec',root||document).forEach(function(el,i){el.classList.add('rv');el.style.transitionDelay=(i%5*70)+'ms';if(io)io.observe(el);else el.classList.add('in')})}
-var TR={'ምስር ክክ ወጥ':'misir-kik-wot','ሱፍ ፍትፍት':'suf-fitfit','ሽሮ ወጥ':'shiro-wot','ሽንብራ ዓሣ ወጥ':'shimbra-asa-wot','ቡጥጫ':'butecha','አተር ክክ አልጫ ወጥ':'ater-kik-alicha-wot','አዚፍ':'azif','ጎመን ወጥ':'gomen-wot','ፍሶሊያ ካሮት':'fasolia-carrot'};
-function slug(n){return TR[n]||n.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\(.*?\)/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')}
+function reveal(root){$$('.pk,.steps p,.sec',root||document).forEach(function(el,i){el.classList.add('rv');el.style.transitionDelay=(i%5*70)+'ms';if(io)io.observe(el);else el.classList.add('in')})}
+/* older saved menus may still hold these dish names; show them in English */
+var ENG={'ምስር ክክ ወጥ':'Misir Kik Wot','ሱፍ ፍትፍት':'Suf Fitfit','ሽሮ ወጥ':'Shiro Wot','ሽንብራ ዓሣ ወጥ':'Shimbra Asa Wot','ቡጥጫ':'Butecha','አተር ክክ አልጫ ወጥ':'Ater Kik Alicha Wot','አዚፍ':'Azif','ጎመን ወጥ':'Gomen Wot','ፍሶሊያ ካሮት':'Fasolia Carrot'};
+function slug(n){n=ENG[n]||n;return n.normalize('NFKD').replace(/[\u0300-\u036f]/g,'').toLowerCase().replace(/\(.*?\)/g,'').replace(/[^a-z0-9]+/g,'-').replace(/^-+|-+$/g,'')}
 function dimg(n){return '<img src="images/dishes/'+slug(n)+'.jpg" alt="" loading="lazy" onerror="this.remove()">'}
 var popI=-1,popC=-1;
 
@@ -623,7 +534,7 @@ function renderDishes(){
   $('#dishes').innerHTML=h;ctaText();
 }
 function ctaText(){$('#ctaBtn').textContent=t('Request this package')}
-function dn(n){return LANG==='am'&&AMD[n]?AMD[n]:n}
+function dn(n){return ENG[n]||n}
 function pricePill(p){return p.price?Number(p.price).toLocaleString('en-US')+' '+t('ETB')+' '+t(p.unit==='plate'?'per plate':'per person'):''}
 $('#pills').addEventListener('click',function(e){
   var b=e.target.closest('button');if(!b)return;
@@ -829,14 +740,13 @@ if('serviceWorker' in navigator&&/^https?:/.test(location.protocol))window.addEv
 /* ---- offline bar + language ---- */
 function net(){$('#offline').classList.toggle('on',!navigator.onLine)}
 window.addEventListener('online',net);window.addEventListener('offline',net);net();
-$('#lang').addEventListener('click',function(){setLang(LANG==='am'?'en':'am')});
 $$('option').forEach(function(o){if(!o.hasAttribute('value'))o.value=o.textContent});
 try{var cm=JSON.parse(localStorage.getItem('shine_menu')||'null');if(cm&&cm.m&&Array.isArray(cm.m)&&cm.m.length)P=cm.m}catch(e){}
 function prefill(){try{var m=JSON.parse(localStorage.getItem('shine_me')||'null');if(m){if(!$('#f-name').value)$('#f-name').value=m.n||'';if(!$('#f-phone').value)$('#f-phone').value=m.p||''}}catch(e){}}
 prefill();
 $('#f-date').min=minDate();
 reveal($('#s-home .steps'));
-setLang(LANG);
+renderHome();ctaText();setStep(step);
 go('home');
 
 /* ---- interactivity: ripple, card tilt, header shadow, count-up ---- */
@@ -871,7 +781,6 @@ function countUp(card){
   if(tp)window.addEventListener('scroll',function(){tp.classList.toggle('sc',window.scrollY>8)},{passive:true});
 })();
 
-reveal($('#showList'));
 loadCloud();
 </script>
 </body>
